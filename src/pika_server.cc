@@ -1281,6 +1281,12 @@ int PikaServer::SendRedisCommand(const std::string& command, const std::string& 
   return 0;
 }
 
+void PikaServer::RetransmitData(const std::string& path) {
+
+  blackwidow::BlackWidow *db = new blackwidow::BlackWidow();
+  rocksdb::Status s = db->Open(g_pika_server->bw_options(), path);
+}
+
 /******************************* PRIVATE *******************************/
 
 void PikaServer::DoTimingTask() {
